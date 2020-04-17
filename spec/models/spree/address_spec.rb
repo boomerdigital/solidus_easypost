@@ -4,9 +4,9 @@ require 'spec_helper'
 
 RSpec.describe Spree::Address, :vcr do
   let(:address) { create :address }
+  subject { address.easypost_address }
 
   describe '#easypost_address' do
-    subject { address.easypost_address }
 
     it 'is an EasyPost::Address object' do
       expect(subject).to be_a(EasyPost::Address)
@@ -28,25 +28,39 @@ RSpec.describe Spree::Address, :vcr do
       )
     end
 
-    it 'doesnt verify the address inputted' do
-      Spree::Easypost::Config.address_verification_enabled = false
+    context 'address_verification_enabled' do
+      it 'doesnt verify the address inputted' do
+        Spree::Easypost::Config.address_verification_enabled = false
 
-      expect(subject['verifications']['delivery']).to be_nil
+        expect(subject['verifications']['delivery']).to be_nil
+      end
+
+      it 'verifies the address inputted' do
+        Spree::Easypost::Config.address_verification_enabled = true
+
+        expect(subject['verifications']['delivery']['success']).to be_truthy
+      end
+
+      it 'error' do
+        Spree::Easypost::Config.address_verification_enabled = true
+
+        address1 = create(:address, zipcode: "324324234324", address1: "34 fdgdfgfd")
+
+        expect { address1.easypost_address }.to raise_error
+      end
     end
 
-    it 'verifies the address inputted' do
-      Spree::Easypost::Config.address_verification_enabled = true
+    context 'verify_strict_enabled' do
+      it 'strictly verifies the address inputted' do
+        Spree::Easypost::Config.address_verification_enabled = true
+        Spree::Easypost::Config.verify_strict_enabled = true
 
-      expect(subject['verifications']['delivery']['success']).to be_truthy
+        address1 = create(:address, zipcode: "324324234324", address1: "34 fdgdfgfd")
+
+        expect { address1.easypost_address }.to raise_error
+      end
     end
 
-    it 'strictly verifies the address inputted' do
-      Spree::Easypost::Config.address_verification_enabled = true
-      Spree::Easypost::Config.verify_strict_enabled = true
 
-      address1 = create(:address, zipcode: "324324234324", address1: "34 fdgdfgfd")
-
-      expect { address1.easypost_address }.to raise_error
-    end
   end
 end

@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: post
-    uri: https://api.easypost.com/v2/addresses
+    uri: https://api.easypost.com/v2/addresses?verify_strict%5B%5D=delivery
     body:
       encoding: UTF-8
       string: address[street1]=215%20N%207th%20Ave&address[street2]=Northwest&address[city]=Manville&address[zip]=08835&address[phone]=555-555-0199&address[company]=Company&address[name]=John%20Doe&address[state]=NJ&address[country]=US
@@ -33,7 +33,7 @@ http_interactions:
       X-Content-Type-Options:
       - nosniff
       X-Ep-Request-Uuid:
-      - 7a43cb445e8a2ebefebde29e00071e08
+      - 32df5bfb5e976c76e5e058e3000045c5
       Cache-Control:
       - no-cache, no-store, must-revalidate, private
       Pragma:
@@ -41,28 +41,29 @@ http_interactions:
       Expires:
       - '0'
       Location:
-      - "/api/v2/addresses/adr_73d9f93836fb49b89953c2a1e0907693"
+      - "/api/v2/addresses/adr_2598a6beb0b643d49fb35f2b5093676c"
       Content-Type:
       - application/json; charset=utf-8
       X-Runtime:
-      - '0.030157'
+      - '0.111498'
       Transfer-Encoding:
       - chunked
       X-Node:
-      - bigweb8sj
+      - bigweb9sj
       X-Version-Label:
-      - easypost-202004040128-16fe9181c9-master
+      - easypost-202004152009-a042acd7cd-master
       X-Backend:
       - easypost
       X-Proxied:
-      - extlb1sj 4515783a4a
-      - intlb1sj 1cda4c0014
+      - extlb2wdc 5834894b53
+      - intlb2sj 5834894b53
+      - intlb2wdc 5834894b53
       Strict-Transport-Security:
       - max-age=15768000; includeSubDomains; preload
     body:
       encoding: ASCII-8BIT
-      string: '{"id":"adr_73d9f93836fb49b89953c2a1e0907693","object":"Address","created_at":"2020-04-05T19:17:18Z","updated_at":"2020-04-05T19:17:18Z","name":"John
-        Doe","company":"Company","street1":"215 N 7th Ave","street2":"Northwest","city":"Manville","state":"NJ","zip":"08835","country":"US","phone":"5555550199","email":null,"mode":"test","carrier_facility":null,"residential":null,"federal_tax_id":null,"state_tax_id":null,"verifications":{}}'
+      string: '{"id":"adr_2598a6beb0b643d49fb35f2b5093676c","object":"Address","created_at":"2020-04-15T20:20:06Z","updated_at":"2020-04-15T20:20:06Z","name":"JOHN
+        DOE","company":"COMPANY","street1":"215 N 7TH AVE","street2":"","city":"MANVILLE","state":"NJ","zip":"08835-1215","country":"US","phone":"5555550199","email":null,"mode":"test","carrier_facility":null,"residential":true,"federal_tax_id":null,"state_tax_id":null,"verifications":{"delivery":{"success":true,"errors":[],"details":{"latitude":40.54849,"longitude":-74.59299,"time_zone":"America/New_York"}}}}'
     http_version: null
-  recorded_at: Sun, 05 Apr 2020 19:17:18 GMT
+  recorded_at: Wed, 15 Apr 2020 20:20:07 GMT
 recorded_with: VCR 5.1.0

@@ -2,10 +2,10 @@
 http_interactions:
 - request:
     method: post
-    uri: https://api.easypost.com/v2/addresses?verify_strict%5B%5D=delivery
+    uri: https://api.easypost.com/v2/addresses
     body:
       encoding: UTF-8
-      string: address[street1]=34%20fdgdfgfd&address[street2]=Northwest&address[city]=Manville&address[zip]=324324234324&address[phone]=555-555-0199&address[company]=Company&address[name]=John%20Doe&address[state]=NJ&address[country]=US
+      string: address[street1]=215%20N%207th%20Ave&address[street2]=Northwest&address[city]=Manville&address[zip]=08835&address[phone]=555-555-0199&address[company]=Company&address[name]=John%20Doe&address[state]=NJ&address[country]=US
     headers:
       Accept:
       - "*/*"
@@ -16,15 +16,15 @@ http_interactions:
       Content-Type:
       - application/x-www-form-urlencoded
       Content-Length:
-      - '222'
+      - '221'
       Accept-Encoding:
       - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
       Host:
       - api.easypost.com
   response:
     status:
-      code: 422
-      message: Unknown
+      code: 201
+      message: Created
     headers:
       X-Frame-Options:
       - SAMEORIGIN
@@ -33,35 +33,37 @@ http_interactions:
       X-Content-Type-Options:
       - nosniff
       X-Ep-Request-Uuid:
-      - 00b1e24d5e8a2ec0febde29f0007bbd1
+      - 32df5bff5e976c78e5e058fe0000465c
       Cache-Control:
       - no-cache, no-store, must-revalidate, private
       Pragma:
       - no-cache
       Expires:
       - '0'
+      Location:
+      - "/api/v2/addresses/adr_cd62b0c3c939446b8009312643119ebf"
       Content-Type:
       - application/json; charset=utf-8
       X-Runtime:
-      - '0.110340'
+      - '0.025132'
       Transfer-Encoding:
       - chunked
       X-Node:
-      - bigweb10sj
+      - bigweb11sj
       X-Version-Label:
-      - easypost-202004040128-16fe9181c9-master
+      - easypost-202004152009-a042acd7cd-master
       X-Backend:
       - easypost
       X-Proxied:
-      - extlb2sj 4515783a4a
-      - intlb1sj 1cda4c0014
+      - extlb2wdc 5834894b53
+      - intlb2sj 5834894b53
+      - intlb2wdc 5834894b53
       Strict-Transport-Security:
       - max-age=15768000; includeSubDomains; preload
     body:
       encoding: ASCII-8BIT
-      string: '{"error":{"code":"ADDRESS.VERIFY.FAILURE","message":"Unable to verify
-        address.","errors":[{"code":"E.ADDRESS.NOT_FOUND","field":"address","message":"Address
-        not found","suggestion":null}]}}'
+      string: '{"id":"adr_cd62b0c3c939446b8009312643119ebf","object":"Address","created_at":"2020-04-15T20:20:08Z","updated_at":"2020-04-15T20:20:08Z","name":"John
+        Doe","company":"Company","street1":"215 N 7th Ave","street2":"Northwest","city":"Manville","state":"NJ","zip":"08835","country":"US","phone":"5555550199","email":null,"mode":"test","carrier_facility":null,"residential":null,"federal_tax_id":null,"state_tax_id":null,"verifications":{}}'
     http_version: null
-  recorded_at: Sun, 05 Apr 2020 19:17:20 GMT
+  recorded_at: Wed, 15 Apr 2020 20:20:09 GMT
 recorded_with: VCR 5.1.0
