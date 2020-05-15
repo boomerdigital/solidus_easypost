@@ -21,7 +21,7 @@ module SolidusEasypost
 
           if delivery_verifications.success === false
             delivery_verifications.errors.map(&:message).each do |message|
-              order.errors.add(:address, message)
+              order.errors.add(:address, "EasyPost address verification: #{message}")
             end
           end
 
