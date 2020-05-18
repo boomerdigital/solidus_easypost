@@ -1,6 +1,5 @@
 # frozen_string_literal: true
 
-# rubocop:disable Metrics/BlockLength
 module SolidusEasypost
   module Spree
     module Stock
@@ -47,4 +46,3 @@ module SolidusEasypost
     end
   end
 end
-# rubocop:enable Metrics/BlockLength

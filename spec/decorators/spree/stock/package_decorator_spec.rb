@@ -3,6 +3,7 @@
 require 'spec_helper'
 require 'ostruct'
 
+# rubocop:disable Metrics/BlockLength
 describe Spree::Stock::Package, :vcr do
   let(:package) { create(:shipment).to_package }
 
@@ -78,3 +79,4 @@ describe Spree::Stock::Package, :vcr do
     end
   end
 end
+# rubocop:enable Metrics/BlockLength
