@@ -13,7 +13,7 @@ module SolidusEasypost
             if frontend_only
               shipping_rates.select! do |rate|
                 rate.shipping_method.available_to_users? &&
-                    rate.shipping_method.is_easypost === false
+                    rate.shipping_method.is_easypost == false
               end
             end
 
