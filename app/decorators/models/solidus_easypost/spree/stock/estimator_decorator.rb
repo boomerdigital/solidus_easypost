@@ -11,7 +11,10 @@ module SolidusEasypost
 
             shipping_rates = calculate_shipping_rates(package)
             if frontend_only
-              shipping_rates.select! { |rate| rate.shipping_method.available_to_users? && rate.shipping_method.is_easypost === false }
+              shipping_rates.select! do |rate|
+                rate.shipping_method.available_to_users? &&
+                    rate.shipping_method.is_easypost === false
+              end
             end
 
             if easypost_rates.any?
@@ -23,11 +26,11 @@ module SolidusEasypost
                 next unless eligible_methods.include?(sm)
 
                 spree_rate = ::Spree::ShippingRate.new(
-                  name: "#{rate.carrier} #{rate.service}",
-                  cost: rate.rate,
-                  easy_post_shipment_id: rate.shipment_id,
-                  easy_post_rate_id: rate.id,
-                  shipping_method: sm
+                    name: "#{rate.carrier} #{rate.service}",
+                    cost: rate.rate,
+                    easy_post_shipment_id: rate.shipment_id,
+                    easy_post_rate_id: rate.id,
+                    shipping_method: sm
                 )
 
                 shipping_rates << spree_rate
