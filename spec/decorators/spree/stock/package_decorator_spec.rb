@@ -75,7 +75,7 @@ describe Spree::Stock::Package, :vcr do
       let(:model_errors) { ActiveModel::Errors.new(order) }
 
       it('has no errors') { expect(order.errors).to be_empty }
-      it('is an Errors object') { expect(order.errors).to be_a ActiveModel::Errors }
+      it('is an AM:Error') { expect(order.errors).to be_a ActiveModel::Errors }
     end
   end
 end
