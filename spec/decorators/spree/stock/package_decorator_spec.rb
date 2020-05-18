@@ -62,7 +62,10 @@ describe Spree::Stock::Package, :vcr do
 
       it('has model errors') { expect(order.errors).not_to be_empty }
       it('err mentions easypost') { expect(addr_err).to include package.error_label }
-      it('err includes API message') { expect(addr_err).to include invalid_address_error.message }
+
+      it 'err includes API message' do
+        expect(addr_err).to include invalid_address_error.message
+      end
     end
 
     context 'with verifiable address' do

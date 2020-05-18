@@ -21,15 +21,14 @@ FactoryBot.modify do
     city { 'Manville' }
     association(:state, name: 'New Jersey', abbr: 'NJ')
     zipcode { '08835' }
-
   end
 
   factory :stock_location do
     trait :invalid do
-      address1 { '10000 Flamingo Rd.'}
+      address1 { '10000 Flamingo Rd.' }
       city { 'Gulf Breeze' }
       association(:state, name: 'Florida', abbr: 'FL')
-      zipcode { rand(10000..99999).to_s }
+      zipcode { rand(10_000..99_999).to_s }
     end
   end
 
