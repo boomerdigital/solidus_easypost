@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+# rubocop:disable Metrics/BlockLength
 module SolidusEasypost
   module Spree
     module Stock
@@ -38,7 +39,7 @@ module SolidusEasypost
         end
 
         def error_label
-          "EasyPost address verification"
+          'EasyPost address verification'
         end
 
         ::Spree::Stock::Package.prepend self
@@ -46,3 +47,4 @@ module SolidusEasypost
     end
   end
 end
+# rubocop:enable Metrics/BlockLength
