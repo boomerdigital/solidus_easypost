@@ -37,11 +37,11 @@ module SolidusEasypost
       attrs = %i[name company street1 street2 city state zip country phone]
       attrs.map { |attr_name| [attr_name, send(attr_name)] }
            .to_h
-           .merge(verify: verification_params)
+           .merge(verification_params)
     end
 
     def easypost_approved
-      verifications.each do |_key, value|
+      to_easypost.verifications.each do |_key, value|
         next if value.try(:success)
 
         handle_verification_failure! value
@@ -66,29 +66,24 @@ module SolidusEasypost
       errors.add :base, msg
     end
 
-    def verifications
-      verification_params.map do |field|
-        [field, to_easypost.verifications.try(field)]
-      end
-    end
-
     def self.from_stock_location(stock_location)
       new stock_location.easypost_hash
     end
 
-    def self.from_ship_address(addr)
+    def self.from_solidus_address(addr)
       new addr.easypost_hash
     end
 
     private
 
     def verification_params
-      %w[delivery zip4]
-    end
+      return {} unless ::Spree::Easypost::Config.address_verification_enabled
 
-    def should_verify?
-      #::Spree::Easypost::Config.address_verification_enabled
-      true
+      if ::Spree::Easypost::Config.verify_strict_enabled
+        { verify_strict: ['delivery'] }
+      else
+        { verify: ['delivery'] }
+      end
     end
   end
 end
