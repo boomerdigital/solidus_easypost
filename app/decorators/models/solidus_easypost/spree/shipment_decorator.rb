@@ -34,7 +34,12 @@ module SolidusEasypost
       end
 
       def build_easypost_shipment
-        shipment_hash = {
+        ::EasyPost::Shipment.create(easypost_hash)
+      end
+
+      # easypost:disable LineLength MethodLength
+      def easypost_hash
+        out = {
           to_address: order.ship_address.easypost_address,
           from_address: stock_location.easypost_address,
           parcel: to_package.easypost_parcel,
@@ -42,11 +47,12 @@ module SolidusEasypost
         }
 
         if international_shipment?
-          shipment_hash[:customs_info] = SolidusEasypost::CustomsInfo.new(order).info
+          out[:customs_info] = SolidusEasypost::CustomsInfo.new(order).info
         end
 
-        ::EasyPost::Shipment.create(shipment_hash)
+        out
       end
+      # easypost:enable LineLength MethodLength
 
       def buy_easypost_rate
         rate = easypost_shipment.rates.find do |sr|
