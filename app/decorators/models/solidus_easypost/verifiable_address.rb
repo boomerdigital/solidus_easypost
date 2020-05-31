@@ -57,6 +57,7 @@ module SolidusEasypost
                          ::EasyPost::Address.create easypost_params
                        rescue ::EasyPost::Error => e
                          handle_verification_failure! e.message
+                         raise
                        end
     end
 

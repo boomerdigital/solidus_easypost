@@ -1,0 +1,69 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://api.easypost.com/v2/addresses?verify%5B%5D=delivery
+    body:
+      encoding: UTF-8
+      string: address[name]=John%20Doe&address[company]=Company&address[street1]=A%20Different%20Road&address[street2]=Northwest&address[city]=Manville&address[state]=NJ&address[zip]=08835&address[country]=US&address[phone]=555-555-0199
+    headers:
+      Accept:
+      - "*/*"
+      User-Agent:
+      - EasyPost/v2 RubyClient/3.0.1
+      Authorization:
+      - Bearer EZTKa6a3653e4e3f4b2883013f4c20e1f28b6camRFWNI0aRqQQqDnQKkg
+      Content-Type:
+      - application/x-www-form-urlencoded
+      Content-Length:
+      - '222'
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Host:
+      - api.easypost.com
+  response:
+    status:
+      code: 201
+      message: Created
+    headers:
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Content-Type-Options:
+      - nosniff
+      X-Ep-Request-Uuid:
+      - bc052fd15ed4119bec4ae1d800092a63
+      Cache-Control:
+      - no-cache, no-store, must-revalidate, private
+      Pragma:
+      - no-cache
+      Expires:
+      - '0'
+      Location:
+      - "/api/v2/addresses/adr_f26ea4d40d8b4a9d881af617149c22fd"
+      Content-Type:
+      - application/json; charset=utf-8
+      X-Runtime:
+      - '0.120556'
+      Transfer-Encoding:
+      - chunked
+      X-Node:
+      - bigweb9sj
+      X-Version-Label:
+      - easypost-202005310456-19e036fdb6-master
+      X-Backend:
+      - easypost
+      X-Proxied:
+      - extlb2sj 5834894b53
+      - intlb2sj 5834894b53
+      Strict-Transport-Security:
+      - max-age=15768000; includeSubDomains; preload
+    body:
+      encoding: ASCII-8BIT
+      string: '{"id":"adr_f26ea4d40d8b4a9d881af617149c22fd","object":"Address","created_at":"2020-05-31T20:20:43Z","updated_at":"2020-05-31T20:20:43Z","name":"John
+        Doe","company":"Company","street1":"A Different Road","street2":"Northwest","city":"Manville","state":"NJ","zip":"08835","country":"US","phone":"5555550199","email":null,"mode":"test","carrier_facility":null,"residential":null,"federal_tax_id":null,"state_tax_id":null,"verifications":{"delivery":{"success":false,"errors":[{"code":"E.ADDRESS.NOT_FOUND","field":"address","message":"Address
+        not found","suggestion":null}],"details":{}}}}'
+    http_version: null
+  recorded_at: Sun, 31 May 2020 20:20:43 GMT
+recorded_with: VCR 5.1.0

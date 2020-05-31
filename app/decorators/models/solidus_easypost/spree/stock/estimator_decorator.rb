@@ -14,6 +14,8 @@ module SolidusEasypost
           super
         end
 
+        private
+
         def build_easypost_shipping_rates(package, frontend_only = true)
           return super unless package_easypost_eligible?(package)
 
@@ -34,14 +36,13 @@ module SolidusEasypost
           ship_rates
         end
 
-        def capture_rates!(easypost_rates, ship_methods, ship_rates)
-          easypost_rates.each do |rate|
-            shipping_method = find_or_create_shipping_method(rate)
-            next unless shipping_method.available_to_users?
-            next unless ship_methods.include?(shipping_method)
-
-            ship_rates << spree_rate_for(rate, shipping_method)
+        def initialize_ship_rates(frontend_only, package)
+          rates = calculate_shipping_rates(package)
+          if frontend_only
+            rates.select! { |r| r.shipping_method.available_to_users? }
+            rates.reject! { |r| r.shipping_method.is_easypost }
           end
+          rates
         end
 
         def spree_rate_for(rate, shipping_method)
@@ -54,20 +55,19 @@ module SolidusEasypost
           )
         end
 
-        def initialize_ship_rates(frontend_only, package)
-          rates = calculate_shipping_rates(package)
-          if frontend_only
-            rates.select! { |r| r.shipping_method.available_to_users? }
-            rates.reject! { |r| r.shipping_method.is_easypost }
+        def capture_rates!(easypost_rates, ship_methods, ship_rates)
+          easypost_rates.each do |rate|
+            shipping_method = find_or_create_shipping_method(rate)
+            next unless shipping_method.available_to_users?
+            next unless ship_methods.include?(shipping_method)
+
+            ship_rates << spree_rate_for(rate, shipping_method)
           end
-          rates
         end
 
-        private
-
         # Cartons require shipping methods to be present, This will lookup a
-        # Shipping method based on the admin(internal)_name. This is not user facing
-        # and should not be changed in the admin.
+        # Shipping method based on the admin(internal)_name.
+        # This is not user facing and should not be changed in the admin.
         def find_or_create_shipping_method(rate)
           method_name = "#{rate.carrier} #{rate.service}"
           ::Spree::ShippingMethod

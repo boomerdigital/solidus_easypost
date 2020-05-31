@@ -2,18 +2,11 @@
 
 require 'spec_helper'
 
-def enable_verification!
-  allow(::Spree::Easypost::Config).to(
-    receive(:address_verification_enabled)
-        .and_return(true)
-  )
-end
-
 describe SolidusEasypost::VerifiableAddress, :vcr do
   let(:ship_address) { build(:ship_address) }
 
   context 'easypost verification is enabled via config' do
-    before { enable_verification! }
+    before { enable_address_verification! }
 
     context 'loaded from valid* but not verifiable solidus shipping address' do
       subject { described_class.from_solidus_address ship_address }

@@ -37,7 +37,7 @@ module SolidusEasypost
         ::EasyPost::Shipment.create(easypost_hash)
       end
 
-      # easypost:disable LineLength MethodLength
+      # rubocop:disable LineLength MethodLength
       def easypost_hash
         out = {
           to_address: order.ship_address.easypost_address,
@@ -52,7 +52,7 @@ module SolidusEasypost
 
         out
       end
-      # easypost:enable LineLength MethodLength
+      # rubocop:enable LineLength MethodLength
 
       def buy_easypost_rate
         rate = easypost_shipment.rates.find do |sr|
