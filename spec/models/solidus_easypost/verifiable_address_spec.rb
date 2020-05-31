@@ -19,7 +19,7 @@ describe SolidusEasypost::VerifiableAddress, :vcr do
         it('should have an error') { expect(subject.errors.any?).to be_truthy }
 
         it 'should mention easypost address verification in the error' do
-          expect(base_errors).to match /easypost address verification/i
+          expect(base_errors).to match(/easypost address verification/i)
         end
 
         it 'should include all address input info in the error response' do
@@ -45,7 +45,12 @@ describe SolidusEasypost::VerifiableAddress, :vcr do
     let(:usa) { build :country, iso: 'US' }
     let(:california) { build :state, state_code: 'CA', country: usa }
     let(:ship_address) do
-      ::Spree::Address.new(address1: '417 Montgomery Street', city: 'SF', state: california, zipcode: '94104', country: usa)
+      ::Spree::Address.new(
+        address1: '417 Montgomery Street',
+        city: 'SF',
+        state: california,
+        zipcode: '94104', country: usa
+      )
     end
     subject { described_class.from_ship_address ship_address }
 

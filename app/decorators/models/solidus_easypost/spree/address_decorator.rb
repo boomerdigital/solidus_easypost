@@ -31,6 +31,23 @@ module SolidusEasypost
           ::EasyPost::Address.create attributes
         end
 
+        # @return [Hash] an EasyPost compatible address hash
+        # rubocop:disable MethodLength
+        def easypost_hash
+          {
+            name: full_name,
+            street1: address1,
+            street2: address2,
+            city: city,
+            state: state_text,
+            zip: zipcode,
+            country: country.try(:iso),
+            phone: phone,
+            company: company
+          }
+        end
+        # rubocop:enable MethodLength
+
         ::Spree::Address.prepend self
       end
     end

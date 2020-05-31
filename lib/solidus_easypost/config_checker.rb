@@ -1,9 +1,14 @@
+# frozen_string_literal: true
+
 module SolidusEasypost
+  # ConfigChecker provides a catchall entrypoint for validating a store's
+  # easypost config. Several of these can cause frustrating runtime errors
+  # if not caught early.
   class ConfigChecker
     attr_reader :results
 
     def initialize
-      results = {}
+      @results = {}
       check_all!
     end
 
@@ -22,7 +27,6 @@ module SolidusEasypost
 
     def check_stock_locations
       # make sure they have addresses
-      locs = ::Spree::StockLocation
       # validate them exactly once, with a timestamp maybe?
     end
 
