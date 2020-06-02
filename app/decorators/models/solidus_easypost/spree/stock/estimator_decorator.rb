@@ -7,6 +7,8 @@ module SolidusEasypost
       # Spree::Stock::Estimator.
       module EstimatorDecorator
         def shipping_rates(package, frontend_only = true)
+          return super unless package_easypost_eligible?(package)
+
           build_easypost_shipping_rates package, frontend_only
         rescue ::EasyPost::Error => e
           msg = "[#{e.class}] EasyPost ship rate builder error: #{e.message}"
@@ -17,8 +19,6 @@ module SolidusEasypost
         private
 
         def build_easypost_shipping_rates(package, frontend_only = true)
-          return super unless package_easypost_eligible?(package)
-
           easypost_rates = package
                            .easypost_shipment
                            .rates
