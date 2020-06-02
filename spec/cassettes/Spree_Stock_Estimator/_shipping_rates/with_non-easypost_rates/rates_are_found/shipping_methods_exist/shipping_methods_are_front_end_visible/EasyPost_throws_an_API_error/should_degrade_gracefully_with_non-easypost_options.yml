@@ -1,0 +1,200 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://api.easypost.com/v2/addresses
+    body:
+      encoding: UTF-8
+      string: address[name]=John%20Doe&address[company]=Company&address[street1]=A%20Different%20Road&address[street2]=Northwest&address[city]=Manville&address[state]=NJ&address[zip]=08835&address[country]=US&address[phone]=555-555-0199
+    headers:
+      Accept:
+      - "*/*"
+      User-Agent:
+      - EasyPost/v2 RubyClient/3.0.1
+      Authorization:
+      - Bearer EZTKa6a3653e4e3f4b2883013f4c20e1f28b6camRFWNI0aRqQQqDnQKkg
+      Content-Type:
+      - application/x-www-form-urlencoded
+      Content-Length:
+      - '222'
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Host:
+      - api.easypost.com
+  response:
+    status:
+      code: 201
+      message: Created
+    headers:
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Content-Type-Options:
+      - nosniff
+      X-Ep-Request-Uuid:
+      - 7501ef1c5ed41a3fec4ae7280001987e
+      Cache-Control:
+      - no-cache, no-store, must-revalidate, private
+      Pragma:
+      - no-cache
+      Expires:
+      - '0'
+      Location:
+      - "/api/v2/addresses/adr_b7218d8121104776930e76cf79b16258"
+      Content-Type:
+      - application/json; charset=utf-8
+      X-Runtime:
+      - '0.049528'
+      Transfer-Encoding:
+      - chunked
+      X-Node:
+      - bigweb4sj
+      X-Version-Label:
+      - easypost-202005310456-19e036fdb6-master
+      X-Backend:
+      - easypost
+      X-Proxied:
+      - extlb2wdc 5834894b53
+      - intlb1sj 5834894b53
+      - intlb2wdc 5834894b53
+      Strict-Transport-Security:
+      - max-age=15768000; includeSubDomains; preload
+    body:
+      encoding: ASCII-8BIT
+      string: '{"id":"adr_b7218d8121104776930e76cf79b16258","object":"Address","created_at":"2020-05-31T20:57:35Z","updated_at":"2020-05-31T20:57:35Z","name":"John
+        Doe","company":"Company","street1":"A Different Road","street2":"Northwest","city":"Manville","state":"NJ","zip":"08835","country":"US","phone":"5555550199","email":null,"mode":"test","carrier_facility":null,"residential":null,"federal_tax_id":null,"state_tax_id":null,"verifications":{}}'
+    http_version: null
+  recorded_at: Sun, 31 May 2020 20:57:35 GMT
+- request:
+    method: post
+    uri: https://api.easypost.com/v2/addresses
+    body:
+      encoding: UTF-8
+      string: address[street1]=131%20S%208th%20Ave&address[city]=Manville&address[zip]=08835&address[phone]=(202)%20456-1111&address[name]=NY%20Warehouse&address[company]=NY%20Warehouse&address[state]=NJ&address[country]=US
+    headers:
+      Accept:
+      - "*/*"
+      User-Agent:
+      - EasyPost/v2 RubyClient/3.0.1
+      Authorization:
+      - Bearer EZTKa6a3653e4e3f4b2883013f4c20e1f28b6camRFWNI0aRqQQqDnQKkg
+      Content-Type:
+      - application/x-www-form-urlencoded
+      Content-Length:
+      - '209'
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Host:
+      - api.easypost.com
+  response:
+    status:
+      code: 201
+      message: Created
+    headers:
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Content-Type-Options:
+      - nosniff
+      X-Ep-Request-Uuid:
+      - 7501ef1e5ed41a40ec4aea37000198a2
+      Cache-Control:
+      - no-cache, no-store, must-revalidate, private
+      Pragma:
+      - no-cache
+      Expires:
+      - '0'
+      Location:
+      - "/api/v2/addresses/adr_b2e074cc83d7481fa4335dae7933f72b"
+      Content-Type:
+      - application/json; charset=utf-8
+      X-Runtime:
+      - '0.032254'
+      Transfer-Encoding:
+      - chunked
+      X-Node:
+      - bigweb6sj
+      X-Version-Label:
+      - easypost-202005310456-19e036fdb6-master
+      X-Backend:
+      - easypost
+      X-Proxied:
+      - extlb2wdc 5834894b53
+      - intlb2sj 5834894b53
+      - intlb2wdc 5834894b53
+      Strict-Transport-Security:
+      - max-age=15768000; includeSubDomains; preload
+    body:
+      encoding: ASCII-8BIT
+      string: '{"id":"adr_b2e074cc83d7481fa4335dae7933f72b","object":"Address","created_at":"2020-05-31T20:57:36Z","updated_at":"2020-05-31T20:57:36Z","name":"NY
+        Warehouse","company":"NY Warehouse","street1":"131 S 8th Ave","street2":null,"city":"Manville","state":"NJ","zip":"08835","country":"US","phone":"2024561111","email":null,"mode":"test","carrier_facility":null,"residential":null,"federal_tax_id":null,"state_tax_id":null,"verifications":{}}'
+    http_version: null
+  recorded_at: Sun, 31 May 2020 20:57:36 GMT
+- request:
+    method: post
+    uri: https://api.easypost.com/v2/parcels
+    body:
+      encoding: UTF-8
+      string: parcel[weight]=10.0
+    headers:
+      Accept:
+      - "*/*"
+      User-Agent:
+      - EasyPost/v2 RubyClient/3.0.1
+      Authorization:
+      - Bearer EZTKa6a3653e4e3f4b2883013f4c20e1f28b6camRFWNI0aRqQQqDnQKkg
+      Content-Type:
+      - application/x-www-form-urlencoded
+      Content-Length:
+      - '19'
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Host:
+      - api.easypost.com
+  response:
+    status:
+      code: 201
+      message: Created
+    headers:
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Content-Type-Options:
+      - nosniff
+      X-Ep-Request-Uuid:
+      - 7501ef1c5ed41a41ec4aea38000198d8
+      Cache-Control:
+      - no-cache, no-store, must-revalidate, private
+      Pragma:
+      - no-cache
+      Expires:
+      - '0'
+      Location:
+      - "/api/v2/parcels/prcl_06ee26fae85a4f6eafc7e49989232d28"
+      Content-Type:
+      - application/json; charset=utf-8
+      X-Runtime:
+      - '0.099892'
+      Transfer-Encoding:
+      - chunked
+      X-Node:
+      - bigweb3sj
+      X-Version-Label:
+      - easypost-202005310456-19e036fdb6-master
+      X-Backend:
+      - easypost
+      X-Proxied:
+      - extlb2wdc 5834894b53
+      - intlb1sj 5834894b53
+      - intlb2wdc 5834894b53
+      Strict-Transport-Security:
+      - max-age=15768000; includeSubDomains; preload
+    body:
+      encoding: ASCII-8BIT
+      string: '{"id":"prcl_06ee26fae85a4f6eafc7e49989232d28","object":"Parcel","created_at":"2020-05-31T20:57:37Z","updated_at":"2020-05-31T20:57:37Z","length":null,"width":null,"height":null,"predefined_package":null,"weight":10.0,"mode":"test"}'
+    http_version: null
+  recorded_at: Sun, 31 May 2020 20:57:38 GMT
+recorded_with: VCR 5.1.0
